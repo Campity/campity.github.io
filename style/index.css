@@ -1,3 +1,12 @@
 body{
-  background: #0f0;
+  #wrapper .text {
+position:relative;
+bottom:30px;
+left:0px;
+visibility:hidden;
+}
+
+#wrapper:hover .text {
+visibility:visible;
+}
 }
