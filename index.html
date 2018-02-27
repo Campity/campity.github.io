@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+<meta content="Strobe Light Generator" name="title">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>I Have No Clue What I'm Doing</title>
@@ -29,5 +30,56 @@
   <img src="https://images.unsplash.com/photo-1446231855385-1d4b0f025248?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b225b82aed59ec4163fffedc145f33d6&auto=format&fit=crop&w=1500&q=80" alt="Its a dog!">
   
   <script src="js/index.js"></script>
+  <script>
+    var bodyElement = document.querySelector("body");
+ 
+var requestAnimationFrame = window.requestAnimationFrame || 
+                            window.mozRequestAnimationFrame || 
+                            window.webkitRequestAnimationFrame || 
+                            window.msRequestAnimationFrame;
+ 
+var delay = 0;
+ 
+function changeColor() {
+    delay++;
+     
+    if (delay > 3) {
+        bodyElement.style.backgroundColor = getRandomColor();
+        delay = 0;
+    }
+ 
+    requestAnimationFrame(changeColor);
+}
+changeColor();           
+ 
+function getRandomColor() {
+    // creating a random number between 0 and 255
+    var r = Math.floor(Math.random()*256);
+    var g = Math.floor(Math.random()*256);
+    var b = Math.floor(Math.random()*256);
+     
+    // going from decimal to hex
+    var hexR = r.toString(16);
+    var hexG = g.toString(16);
+    var hexB = b.toString(16);
+     
+    // making sure single character values are prepended with a "0"
+    if (hexR.length == 1) {
+        hexR = "0" + hexR;
+    }
+     
+    if (hexG.length == 1) {
+        hexG = "0" + hexG;
+    }
+ 
+    if (hexB.length == 1) {
+        hexB = "0" + hexB;
+    }
+ 
+    // creating the hex value by concatenatening the string values
+    var hexColor = "#" + hexR + hexG + hexB;
+    return hexColor.toUpperCase();
+}
+</script>
 </body>
 </html>
